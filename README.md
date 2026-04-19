@@ -117,3 +117,5 @@ Both estimates are in close agreement with the accepted value. The effective tem
 [1] J. Harder (2020), *SORCE SIM Level 3 Solar Spectral Irradiance Daily Means V027*, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC). DOI: [10.5067/LDDKZ3PXZZ5G](https://doi.org/10.5067/LDDKZ3PXZZ5G). Accessed: Apr. 18, 2026.
 
 [2] M. Stix, *The Sun: An Introduction*, 2nd ed. Springer, 2002, p. 10. Available: https://link.springer.com/book/10.1007/978-3-642-56042-2. Accessed: Apr. 19, 2026.
+
+[3] P. J. Mohr, D. B. Newell, y B. N. Taylor, “CODATA recommended values of the fundamental physical constants: 2014,” Rev. Mod. Phys., vol. 88, n.º 3, p. 035009, sep. 2016. doi: 10.1103/RevModPhys.88.035009.
