@@ -1,6 +1,6 @@
 # Solar Spectrum Analysis
 
-This project presents an analysis of the solar spectral irradiance measured by the SORCE/SIM instrument [1], with the goal of estimating the surface temperature of the Sun using two independent methods: a graphical Planck curve fit and numerical integration of the measured spectrum.
+This project presents an analysis of the solar spectral irradiance measured by the SORCE/SIM instrument [1], with the goal of estimating the surface temperature of the Sun using two independent methods: a graphical Planck curve fit and numerical integration of the measured spectrum. All the deatil calculations can be found on the analysis.ipynb file.
 
 The observation date selected for analysis is **October 27, 2006**.
 
