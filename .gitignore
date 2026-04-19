@@ -1,1 +1,12 @@
 data/
+
+# LaTeX build output
+build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.pdf
