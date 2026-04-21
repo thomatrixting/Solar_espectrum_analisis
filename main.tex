@@ -3,8 +3,7 @@
 % --- Encoding and language ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish, es-nodecimaldot]{babel}
-\usepackage{textcomp}
+\usepackage[provide=*,spanish]{babel}
 
 % --- Math ---
 \usepackage{amsmath}
@@ -42,7 +41,8 @@
 \begin{center}
     {\LARGE\bfseries Parcial 1}\\[0.8em]
     {\large Thomas Gonzalez}\\[0.3em]
-    {\normalsize \today}
+    {\normalsize \today}\\[0.4em]
+    {\small \href{https://github.com/thomatrixting/Solar_espectrum_analisis}{github del proyecto}}
 \end{center}
 
 \vspace{1em}
@@ -77,7 +77,7 @@ La \textbf{ley de Planck} describe la intensidad específica de un cuerpo negro 
     B_\lambda(\lambda, T) = \frac{2hc^2}{\lambda^5}
     \frac{1}{\exp\!\left(\dfrac{hc}{\lambda k_B T}\right) - 1},
 \end{equation}
-donde las constantes $h$, $c$ y $k_B$ corresponden a los valores CODATA 2014 \cite{mohrCODATARecommendedValues2015} provistos por la librería \texttt{astropy}. Ajustar $B_\lambda(T)$ al espectro observado $I_\lambda$ permite obtener la \textbf{temperatura de color} $T_\mathrm{color}$ del Sol.
+donde las constantes $h$, $c$, $k_B$ y $\sigma$ corresponden a los valores directos y derivados (ej: $\sigma$) deCODATA 2014 \cite{mohrCODATARecommendedValues2015} provistos por la librería \texttt{astropy}. Ajustar $B_\lambda(T)$ al espectro observado $I_\lambda$ permite obtener la \textbf{temperatura de color} $T_\mathrm{color}$ del Sol.
 
 Para estimar la \textbf{temperatura efectiva} $T_\mathrm{eff}$, se integra el flujo espectral sobre todo el rango medido y se escala a la superficie solar mediante la ley del inverso del cuadrado:
 \begin{equation}
@@ -86,8 +86,7 @@ Para estimar la \textbf{temperatura efectiva} $T_\mathrm{eff}$, se integra el fl
 y se aplica la ley de Stefan--Boltzmann:
 \begin{equation}
     T_\mathrm{eff} = \left(\frac{F_\odot}{\sigma}\right)^{1/4},
-\end{equation}
-donde $\sigma = 5.6704\times10^{-8}\ \mathrm{W\,m^{-2}\,K^{-4}}$.
+\end{equation}.
 
 % ============================================================
 \section{Actividad 1: Flujo monocromático vs.\ longitud de onda}
@@ -104,7 +103,7 @@ La figura \ref{fig:flujo} muestra el flujo monocromático $F_\lambda$ en funció
 % ============================================================
 \section{Actividad 2: Ángulo sólido del Sol}
 
-A partir de datos de Stellarium para el 27 de octubre de 2006 se obtuvieron los siguientes parámetros solares:
+A partir de datos de Stellarium para el 27 de octubre de 2006 12:00 UTC se obtuvieron los siguientes parámetros solares:
 
 \begin{center}
 \begin{tabular}{ll}
@@ -112,7 +111,7 @@ A partir de datos de Stellarium para el 27 de octubre de 2006 se obtuvieron los 
 Parámetro & Valor \\
 \midrule
 Radio angular aparente & $0^\circ\,32'\,11.22''$ \\
-Distancia Tierra--Sol & $148\,672\,000\ \mathrm{km}$ \\
+Distancia Tierra--Sol & $148\,672\,000\ \mathrm{km}$ o $0.994\ \mathrm{UA}$ \\
 Unidad astronómica (media) & $149\,597\,870.7\ \mathrm{km}$ \\
 Diámetro solar & $1\,392\,000\ \mathrm{km}$ \\
 \bottomrule
@@ -142,7 +141,7 @@ Dividiendo $F_\lambda$ por el ángulo sólido $\Omega_\odot$ calculado en la act
 % ============================================================
 \section{Actividad 4: Ajuste de la curva de Planck --- temperatura de color}
 
-Se superpusieron curvas de Planck a distintas temperaturas sobre el espectro de intensidad específica. Los criterios de ajuste requieren que la curva teórica: (i) tenga su máximo lo más cercano posible al máximo observado, y (ii) cruce al menos un punto experimental antes del máximo. La figura \ref{fig:planck} muestra el proceso de refinamiento progresivo del ajuste.
+Se superpusieron curvas de Planck a distintas temperaturas sobre el espectro de intensidad específica. Los criterios de ajuste requieren que la curva teórica: (i) tenga su máximo lo más cercano posible al máximo observado, y (ii) cruce al menos un punto experimental antes y despues del máximo. La figura \ref{fig:planck} muestra el proceso de refinamiento progresivo del ajuste.
 
 \begin{figure}[H]
     \centering
@@ -151,18 +150,18 @@ Se superpusieron curvas de Planck a distintas temperaturas sobre el espectro de 
     \label{fig:planck}
 \end{figure}
 
-La inspección cuidadosa revela que curvas por encima de 5900 K se acercan más al máximo observado como se ve en (B), pero no intersectan ningún punto experimental previo al máximo, incumpliendo el segundo criterio. La temperatura que mas se aproxima al maximo y intersecta un punto experimental antes del máximo es:
+El analisis muestra que la temperatura debe estan entre $5500K$ y $6000K$ (A), posteriormente en (B) se nota que curvas por encima de 5900 K se acercan más al máximo observado, pero no intersectan ningún punto experimental previo al máximo, incumpliendo el segundo criterio. La temperatura que mas se aproxima al maximo y intersecta un punto experimental antes del máximo, como se ve en (C), es:
 \begin{equation*}
     T_\mathrm{color} = 5875\ \mathrm{K}.
 \end{equation*}
-El panel (D) muestra que este ajuste reproduce razonablemente bien el espectro observado; los residuales son atribuibles al ruido inherente a las mediciones del instrumento SIM.
+El panel (D) muestra que este ajuste reproduce razonablemente bien el espectro observado; los residuales son atribuibles al ruido inherente a las mediciones del instrumento SIM y al hecho de que se esta aproximando la emision con la de un cuerpo negro.
 
 % ============================================================
 \section{Actividad 5: Integración espectral --- temperatura efectiva}
 
 El flujo integrado se obtiene aplicando la regla del trapecio sobre $F_\lambda$ en todo el rango espectral medido, y se corrige por la distancia Tierra--Sol en la fecha de análisis ($r = 0.994\ \mathrm{AU}$) mediante la ley del inverso del cuadrado ($F \propto r^{-2}$):
 \begin{equation*}
-    F_\mathrm{comp} = 1337.9\ \mathrm{W\,m^{-2}}.
+    F_\mathrm{calc} = 1337.9\ \mathrm{W\,m^{-2}}.
 \end{equation*}
 Este valor es consistente con el reportado oficialmente por el instrumento SORCE/TIM para la misma fecha:
 \begin{equation*}
